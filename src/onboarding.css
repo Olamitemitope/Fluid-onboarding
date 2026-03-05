@@ -1,0 +1,524 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&display=swap');
+
+/* ─── Page wrapper ─── */
+.onboarding-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f0f0f0;
+}
+
+/* ─── Phone frame ─── */
+.phone-frame {
+  position: relative;
+  width: 430px;
+  height: 932px;
+  background: #ECECEC;
+  overflow: hidden;
+  border-radius: 40px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.25);
+}
+
+/* ─── Status bar ─── */
+.status-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px 16px 40px;
+  position: absolute;
+  width: 430px;
+  height: 54px;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.status-time {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.3px;
+  color: #000;
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* ─── Slide container ─── */
+.slides-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ─── Screen / slide ─── */
+.screen {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+}
+
+.screen.enter {
+  opacity: 0;
+  transform: translateX(15px);
+}
+
+.screen.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.screen.exit {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.screen.enter-back {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+
+.screen.exit-back {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+/* Bottom to top animation (Screen 1 → Screen 2) */
+.screen.enter-bottom {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.screen.exit-top {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: none;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 75px;
+  position: absolute;
+  width: 239px;
+  height: 24px;
+  left: 47px;
+  top: 78px;
+}
+
+.back-btn {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  border-radius: 50%;
+}
+
+.back-btn:active {
+  opacity: 0.6;
+  transform: scale(0.9);
+}
+
+.back-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ─── Progress indicator ─── */
+.progress-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 0;
+}
+
+.progress-line {
+  height: 0;
+  border-radius: 2px;
+  border: 3px solid #9A9A9A;
+}
+
+.progress-line.active {
+  width: 36px;
+  border-color: #000000;
+}
+
+.progress-line.inactive {
+  width: 18px;
+  border-color: #9A9A9A;
+}
+
+/* ─── Step content area  ─── */
+.step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  position: absolute;
+  left: 47px;
+  top: 118px;
+  width: 262px;
+}
+
+.step-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.step-subtitle {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+  color: #9A9A9A;
+  margin: 0;
+  max-width: 262px;
+}
+
+/* ─── Phone input row ─── */
+.phone-input-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  width: 256px;
+  height: 22px;
+  position: relative;
+}
+
+.phone-input-text {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+  color: rgba(154, 154, 154, 0.5);
+}
+
+.phone-input-text.filled {
+  color: #000;
+}
+
+.input-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 18px;
+  background: #4D5FFF;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ─── OTP input row ─── */
+.otp-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 262px;
+  height: 22px;
+}
+
+/* ─── Bottom action area ─── */
+.bottom-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  position: absolute;
+  width: 430px;
+  bottom: 0;
+  left: 0;
+}
+
+.btn-next {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px;
+  width: 328px;
+  height: 54px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.btn-next:active {
+  transform: scale(0.96);
+}
+
+.btn-next.active-btn {
+  background: #000000;
+}
+
+.btn-next.active-btn:active {
+  background: #333333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-next.dimmed {
+  background: rgba(0, 0, 0, 0.15);
+  cursor: not-allowed;
+}
+
+/* ─── Keyboard mock ─── */
+.keyboard-mock {
+  width: 430px;
+  height: 313px;
+  background: #999CA1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 4px 4px;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.kb-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4.52px;
+  width: 100%;
+}
+
+.kb-key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 134px;
+  height: 51px;
+  background: #FFFFFF;
+  box-shadow: 0 1.13px 0 rgba(0, 0, 0, 0.27);
+  border-radius: 6.78px;
+  border: none;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.08s ease, filter 0.08s ease;
+}
+
+.kb-key:active {
+  transform: scale(0.9);
+  filter: brightness(0.85);
+}
+
+.kb-key.dark {
+  background: #888B91;
+  color: #fff;
+  font-size: 15px;
+}
+
+
+/* ─── INTRO SCREEN ─── */
+.screen:first-child .progress-bar {
+  position: absolute;
+  top: 78px;
+  left: 146px;
+}
+
+.intro-bottom {
+  position: absolute;
+  left: 24px;
+  bottom: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 256px;
+}
+
+.intro-app-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 140%;
+  color: #000000;
+  margin: 0;
+}
+
+.intro-tagline {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  color: #9A9A9A;
+  margin: 0;
+  width: 256px;
+}
+
+.intro-btn-wrap {
+  position: absolute;
+  width: 430px;
+  left: 0;
+  bottom: 106px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ─── DATE PICKER ─── */
+.date-picker-wrap {
+  position: relative;
+  width: 276px;
+  height: 154px;
+  margin-top: 8px;
+}
+
+.date-picker-columns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  position: absolute;
+  width: 207px;
+  height: 124px;
+  left: 50%;
+  top: 15px;
+  transform: translateX(-50%);
+}
+
+.picker-col {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.picker-col::-webkit-scrollbar {
+  display: none;
+}
+
+.picker-col-day {
+  width: 34px;
+  height: 124px;
+}
+
+.picker-col-month {
+  width: 87px;
+  height: 124px;
+}
+
+.picker-col-year {
+  width: 50px;
+  height: 124px;
+}
+
+.picker-item {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 140%;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #000000;
+  scroll-snap-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Frosted overlay top */
+.picker-overlay-top {
+  position: absolute;
+  width: 276px;
+  height: 60px;
+  left: 0;
+  top: 0;
+  background: rgba(236, 236, 236, 0.75);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Frosted overlay bottom */
+.picker-overlay-bottom {
+  position: absolute;
+  width: 276px;
+  height: 60px;
+  left: 0;
+  bottom: 0;
+  background: rgba(236, 236, 236, 0.75);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Selection line in middle */
+.picker-selection-line {
+  position: absolute;
+  width: 207px;
+  height: 36px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-top: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ─── Age step content block ─── */
+.age-step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: absolute;
+  width: 276px;
+  left: 47px;
+  top: 118px;
+}
